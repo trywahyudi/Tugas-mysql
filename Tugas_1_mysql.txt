@@ -1,0 +1,80 @@
+1. membuka cmd
+2. memanggil mysql = cd C:\xampp\mysql\bin
+3. lalu MariaDB = mysql -u root -p
+
+membuat database
+1. CREATE DATABASE dbpegawai;
+Query OK, 1 row affected (0.144 sec)
+
+2. USE dbpegawai
+Database changed
+
+3. SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| ci_online_test     |
+| data_inventaris    |
+| database_buku      |
+| database_siswa     |
+| datahotel          |
+| db_inventaris      |
+| db_penjualan       |
+| db_siswa           |
+| db_tamu            |
+| dbbuku             |
+| dbpegawai          |
+| dbtamu             |
+| information_schema |
+| inventaris         |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| projecthotel       |
+| test               |
+| tokobaju           |
++--------------------+
+20 rows in set (1.081 sec)
+
+4.  CREATE TABLE pegawai ( id INT PRIMARY KEY, nip CHAR(5) NOT NULL UNIQUE, nama VARCHAR(30) NOT NULL, gender ENUM('L', 'P') NOT NULL, umur INT NOT NULL, berat_badan FLOAT );
+Query OK, 0 rows affected (3.238 sec)
+
+5.  DESC pegawai;
++-------------+---------------+------+-----+---------+-------+
+| Field       | Type          | Null | Key | Default | Extra |
++-------------+---------------+------+-----+---------+-------+
+| id          | int(11)       | NO   | PRI | NULL    |       |
+| nip         | char(5)       | NO   | UNI | NULL    |       |
+| nama        | varchar(30)   | NO   |     | NULL    |       |
+| gender      | enum('L','P') | NO   |     | NULL    |       |
+| umur        | int(11)       | NO   |     | NULL    |       |
+| berat_badan | float         | YES  |     | NULL    |       |
++-------------+---------------+------+-----+---------+-------+
+6 rows in set (0.236 sec)
+
+6. insert into pegawai
+-> values
+-> (1, 12345, 'Try Wahyudi Saputra', 'L', 22, 50);
+Query OK, 1 row affected (0.281 sec)
+
+7. select * from pegawai;
++----+-------+---------------------+--------+------+-------------+
+| id | nip   | nama                | gender | umur | berat_badan |
++----+-------+---------------------+--------+------+-------------+
+|  1 | 12345 | Try Wahyudi Saputra | L      |   22 |          50 |
++----+-------+---------------------+--------+------+-------------+
+1 row in set (0.001 sec)
+
+8. insert into pegawai
+-> values
+-> (2, 23125, 'Wahyu', 'L', 19, 75);
+Query OK, 1 row affected (0.234 sec)
+
+9. select * from pegawai;
++----+-------+---------------------+--------+------+-------------+
+| id | nip   | nama                | gender | umur | berat_badan |
++----+-------+---------------------+--------+------+-------------+
+|  1 | 12345 | Try Wahyudi Saputra | L      |   22 |          50 |
+|  2 | 23125 | Wahyu               | L      |   19 |          75 |
++----+-------+---------------------+--------+------+-------------+
+2 rows in set (0.010 sec)
