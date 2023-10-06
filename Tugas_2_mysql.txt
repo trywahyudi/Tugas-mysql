@@ -1,0 +1,67 @@
+1. create database dbtoko_sib;
+2. use dbtoko_sib (untuk mengarah ke database supaya bisa membuat table)
+3. show databases; (untuk menampilkan semua database yang dibuat)
++--------------------+
+| Database           |
++--------------------+
+| ci_online_test     |
+| data_inventaris    |
+| database_buku      |
+| database_siswa     |
+| datahotel          |
+| db_inventaris      |
+| db_penjualan       |
+| db_siswa           |
+| db_tamu            |
+| dbbuku             |
+| dbpegawai          |
+| dbtamu             |
+| dbtoko_sib         |
+| information_schema |
+| inventaris         |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| projecthotel       |
+| test               |
+| tokobaju           |
++--------------------+
+21 rows in set (0.002 sec)
+
+3. membuat table pembelian
+CREATE TABLE pembelian (    
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tanggal DATE,    
+    nomor VARCHAR(10),
+    produk_id INT,    
+    jumlah INT,
+    harga DECIMAL(10, 2),    
+    vendor_id INT
+);
+
+4. membuat table vendor
+CREATE TABLE vendor (    
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nama VARCHAR(50),    
+    kota VARCHAR(50),
+    kontak VARCHAR(15));
+
+
+5. isi tabel pegawai
+ INSERT INTO pembelian (tanggal, nomor, produk_id, jumlah, harga, vendor_id) VALUES 
+    ('2023-10-01', '1001', 1, 10, 5000.00, 1), 
+    ('2023-10-02', '1002', 2, 8, 7000.00, 2), 
+    ('2023-10-03', '1003', 3, 15, 4000.00, 1), 
+    ('2023-10-04', '1004', 1, 5, 4800.00, 3), 
+    ('2023-10-05', '1005', 4, 12, 6000.00, 2);
+
+6. isi table vendor
+INSERT INTO vendor (nama, kota, kontak) VALUES 
+    ('Vendor A', 'Jakarta', '08123456789'), 
+    ('Vendor B', 'Surabaya', '08234567890'), 
+    ('Vendor C', 'Bandung', '08345678901'), 
+    ('Vendor D', 'Yogyakarta', '08456789012'), 
+    ('Vendor E', 'Medan', '08567890123');
+
+
+
