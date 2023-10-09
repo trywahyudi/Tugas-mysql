@@ -1,0 +1,74 @@
+Tugas pertama
+1. Create database dbpos;
+
+2. Use dbpos;
+
+3. create table kartu(
+    ->     id int auto_increment primary key,
+    ->     kode varchar(6) unique,
+    ->     nama varchar(30) not null,
+    ->     diskon double,
+    ->     iuran double);
+Query OK, 0 rows affected (0.493 sec)
+
+4.  create table pelanggan(
+    ->     id int auto_increment primary key,
+    ->     kode varchar(10) unique,
+    ->     nama varchar(45),
+    ->     jk char(1),
+    ->     tmp_lahir varchar(30),
+    ->     tgl_lahir date,
+    ->     email varchar(45),
+    ->     kartu_id int not null references kartu(id));
+Query OK, 0 rows affected (4.349 sec)
+
+5. create table pesanan(
+    ->     id int not null auto_increment primary key,
+    ->     tanggal date,
+    ->     total double,
+    ->     pelanggan_id int not null references pelanggan(id));
+Query OK, 0 rows affected (0.342 sec)
+
+6. create table pembayaran(
+    ->     id int not null auto_increment primary key,
+    ->     nokuitansi varchar(10) unique,
+    ->     tanggal date,
+    ->     jumlah double,
+    ->     ke int,
+    ->     pesanan_id int not null references pesanan(id));
+Query OK, 0 rows affected (3.195 sec)
+
+7. create table jenis_produk(
+    ->     id int not null auto_increment primary key,
+    ->     nama varchar(45));
+Query OK, 0 rows affected (2.320 sec)
+
+8.  create table produk (
+    -> id int not null auto_increment primary key,
+    -> kode varchar(10),
+    -> nama varchar(45),
+    -> harga_beli double,
+    -> harga_jual double,
+    -> stok int,
+    -> min_stok int,
+    -> jenis_produk_id int not null references jenis_produk(id));
+Query OK, 0 rows affected (0.757 sec)
+
+9. create table pembelian (
+    -> id int not null auto_increment primary key,
+    -> tanggal varchar(45),
+    -> nomor varchar(10),
+    -> produk_id int not null references produk(id),
+    -> jumlah int,
+    -> harga double,
+    -> vendor_id int not null references vendor(id));
+Query OK, 0 rows affected (0.217 sec)
+
+10. create table vendor (
+    -> id int not null auto_increment primary key,
+    -> nomor varchar(4),
+    -> nama varchar(40),
+    -> kota varchar(30),
+    -> kontak varchar(30)
+    -> );
+Query OK, 0 rows affected (0.325 sec)
